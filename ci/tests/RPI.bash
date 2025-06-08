@@ -34,12 +34,12 @@ for target in "${FPUTIL_TARGETS[@]}"
 do
     # For RPI deployment to disable FRAMEWORK UTS
     export CMAKE_EXTRA_SETTINGS="-DFPRIME_ENABLE_FRAMEWORK_UTS=OFF"
-    if [[ "${target}" == "generate" ]]
+    if [[ "${target}" == "generate --make" ]]
     then
         rm -rf "${FPUTIL_DEPLOYS}/build-fprime-automatic-"*
     fi
     # When a sysroot is supplied on the base generate target (cross-compiler) add the SYSROOT to the run
-    if [[ "${target}" == "generate" ]] && [[ "$1" != "" ]]
+    if [[ "${target}" == "generate --make" ]] && [[ "$1" != "" ]]
     then
         export CMAKE_EXTRA_SETTINGS="${CMAKE_EXTRA_SETTINGS} -DCMAKE_SYSROOT=${1}"
     fi

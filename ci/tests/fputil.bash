@@ -5,7 +5,7 @@
 # Helpers to test via FP util
 ####
 set -e
-export FPUTIL_TARGETS=("generate" "generate --ut" "build" "build --all" "check --all")
+export FPUTIL_TARGETS=("generate --make" "generate --ut" "build" "build --all" "check --all")
 ####
 # fputil_action:
 #
@@ -22,7 +22,7 @@ function fputil_action {
         PLATFORM=""
 
         cd "${WORKDIR}"
-        if [[ "${TARGET}" != "generate" ]] && [[ "${TARGET}" != "generate --ut" ]]
+        if [[ "${TARGET}" != "generate --make" ]] && [[ "${TARGET}" != "generate --ut" ]]
         then
 	        echo "[INFO] FP Util in ${WORKDIR} running ${TARGET} with ${JOBS} jobs"
             fprime-util ${TARGET} --jobs "${JOBS}" ${PLATFORM} > "${LOG_DIR}/${WORKDIR//\//_}_${TARGET/ /}.out.log" 2> "${LOG_DIR}/${WORKDIR//\//_}_${TARGET/ /}.err.log" \
@@ -49,7 +49,7 @@ function integration_test {
     PLATFORM=""
 
     cd "${WORKDIR}"
-    fprime-util "generate" > "${LOG_DIR}/${WORKDIR//\//_}_pregen.out.log" 2> "${LOG_DIR}/${WORKDIR//\//_}_pregen.err.log" \
+    fprime-util "generate --make" > "${LOG_DIR}/${WORKDIR//\//_}_pregen.out.log" 2> "${LOG_DIR}/${WORKDIR//\//_}_pregen.err.log" \
         || fail_and_stop "Failed to generate before ${WORKDIR//\//_} building integration test"
     cd "${WORKDIR}/"
     fprime-util "build" --jobs "${JOBS}" ${PLATFORM} > "${LOG_DIR}/${WORKDIR//\//_}_${TARGET/ /}.out.log" 2> "${LOG_DIR}/${WORKDIR//\//_}_${TARGET/ /}.err.log" \

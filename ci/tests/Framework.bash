@@ -25,7 +25,7 @@ echo -e "${BLUE}Testing ${FPUTIL_DEPLOYS} against fprime-util targets: ${FPUTIL_
 export CHECK_TARGET_PLATFORM="native"
 for target in "${FPUTIL_TARGETS[@]}"
 do
-    if [[ "${target}" == "generate" ]]
+    if [[ "${target}" == "generate --make" ]]
     then
         rm -rf "${FPUTIL_DEPLOYS}/build-fprime-automatic-"*
     fi

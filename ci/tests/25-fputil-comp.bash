@@ -15,7 +15,7 @@ echo -e "${BLUE}Testing ${deployment} against fprime-util targets: ${FPUTIL_TARG
 export CHECK_TARGET_PLATFORM="native"
 for target in "impl" "impl --ut" "build" "build --ut"
 do
-    if [[ "${TEST_TYPE}" != "QUICK" ]] || [[ "${target}" == "generate" ]]
+    if [[ "${TEST_TYPE}" != "QUICK" ]] || [[ "${target}" == "generate --make" ]]
     then
         rm -rf "${deployment}/build-fprime-automatic-"*
     fi
