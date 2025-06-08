@@ -77,7 +77,7 @@ jobs:
              cd MyProject
              . fprime-venv/bin/activate
              pip install -U -r ./lib/fprime/requirements.txt
-             pip install git+https://github.com/nasa/fprime-tools@${{ needs.get-tools-branch.outputs.target-branch }}
+             pip install git+https://github.com/rmzmrnn/fprime-tools@${{ needs.get-tools-branch.outputs.target-branch }}
 
       - name: "Version Check"
         run: |
