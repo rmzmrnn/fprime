@@ -2,7 +2,7 @@ name: "External Repo: Cookiecutters Tests"
 
 on:
  push:
-   branches: [ devel, release/** ]
+   branches: [ devel, release/**, workflow-test]
  pull_request:
    # The branches below must be a subset of the branches above
    branches: [ devel, release/** ]
@@ -25,7 +25,7 @@ jobs:
     name: "Get fprime-tools target branch"
     uses: ./.github/workflows/reusable-get-pr-branch.yml
     with:
-      target_repository: nasa/fprime-tools
+      target_repository: rmzmrnn/fprime-tools
 
   get-bootstrap-branch:
     name: "Get fprime-bootstrap target branch"
@@ -89,7 +89,7 @@ jobs:
         run: |  
              cd MyProject
              . fprime-venv/bin/activate
-             fprime-util generate
+             fprime-util generate --make
              fprime-util build -j4
 
       - name: "Test New Deployment and Build"
