@@ -2,7 +2,7 @@ name: "FppTest"
 
 on:
   push:
-    branches: [ devel, release/** ]
+    branches: [ devel, release/**, test-branch]
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ devel, release/** ]

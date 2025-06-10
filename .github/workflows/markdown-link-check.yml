@@ -2,7 +2,7 @@ name: Check Markdown links
 
 on: 
   push:
-    branches: [devel, docs/new-website]
+    branches: [devel, docs/new-website, test-branch]
   pull_request:
     branches: [devel]
 
